@@ -1,0 +1,5 @@
+.list { display:grid; grid-template-columns:repeat(7,1fr); gap:16px; }
+.item { display:flex; flex-direction:column; align-items:center; gap:8px;
+  padding:16px; border-radius:12px; background:#fff; box-shadow:0 4px 16px rgba(0,0,0,.06); }
+.icon { width:40px; height:40px; border-radius:8px; background:#e8e8ff; }
+.label { font-size:14px; }
