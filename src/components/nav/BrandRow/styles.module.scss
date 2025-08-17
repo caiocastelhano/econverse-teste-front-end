@@ -1,0 +1,4 @@
+.row { display:flex; gap:16px; align-items:center; overflow-x:auto; padding:8px 0; }
+.brand { background:#fff; border:1px solid #eee; border-radius:6px; padding:8px 12px; }
+.brand img { height:24px; display:block; }
+.active { outline:2px solid #111; }
