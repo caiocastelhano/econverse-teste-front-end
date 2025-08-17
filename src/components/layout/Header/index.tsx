@@ -1,16 +1,13 @@
-import styles from './styles.module.scss';
+import Top from './Top';
+import Main from './Main';
+import Category from './Category';
 
 export default function Header() {
   return (
-    <header className={styles.header}>
-      <div className={styles.bar}>
-        <a className={styles.logo} href="/">VagaShop</a>
-        <nav aria-label="principal" className={styles.nav}>
-          <a href="#destaques">Destaques</a>
-          <a href="#ofertas">Ofertas</a>
-          <a href="#contato">Contato</a>
-        </nav>
-      </div>
+    <header>
+      <Top />
+      <Main />
+      <Category />
     </header>
   );
 }
