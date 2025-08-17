@@ -1,0 +1,6 @@
+.title { font-size:1.25rem; margin-bottom:12px; }
+.grid { display:grid; gap:16px; }
+.cols2 { grid-template-columns: repeat(2, 1fr); }
+.cols3 { grid-template-columns: repeat(3, 1fr); }
+.cols4 { grid-template-columns: repeat(4, 1fr); }
+.footer { margin-top:12px; text-align:center; }

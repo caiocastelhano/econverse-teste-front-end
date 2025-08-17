@@ -1,0 +1,5 @@
+.form { display:flex; gap:12px; align-items:center; justify-content:space-between; padding:16px; border:1px dashed #ccc; border-radius:8px; background:#f8f8f8; }
+.texts { display:flex; flex-direction:column; }
+.controls { display:flex; gap:8px; }
+input { padding:8px 10px; border:1px solid #ddd; border-radius:6px; }
+.success { padding:16px; background:#e6ffed; border:1px solid #b7f5c3; border-radius:8px; }
