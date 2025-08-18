@@ -1,1 +1,15 @@
-.footer { border-top: 1px solid #eee; padding: 24px 16px; text-align: center; background:#fafafa; }
+.footer {
+  height: 46.84px;
+  padding: 0 16px;
+  text-align: center;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer p {
+  font-size: 13px;
+  color: #3F3F40;
+  font-family: Poppins, sans-serif;
+}
