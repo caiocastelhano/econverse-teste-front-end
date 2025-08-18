@@ -1,5 +1,96 @@
-.form { display:flex; gap:12px; align-items:center; justify-content:space-between; padding:16px; border:1px dashed #ccc; border-radius:8px; background:#f8f8f8; }
-.texts { display:flex; flex-direction:column; }
-.controls { display:flex; gap:8px; }
-input { padding:8px 10px; border:1px solid #ddd; border-radius:6px; }
-.success { padding:16px; background:#e6ffed; border:1px solid #b7f5c3; border-radius:8px; }
+.wrapper {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  background: #271c47;
+}
+
+.form {
+  max-width: 1800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(420px, 520px) 640px;
+  align-items: start;
+  gap: 124px;
+  padding: 28px 56px;
+  color: #ffffff;
+}
+
+.texts {
+  max-width: 600px;
+}
+
+.title {
+  margin: 0 0 6px 0;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 600;
+  font-family: Outfit, sans-serif;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #d7d3e4;
+  font-family: Poppins, sans-serif;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 280px 280px 140px;
+  grid-auto-rows: 42px;
+  column-gap: 10px;
+  row-gap: 8px;
+  align-items: center;
+  justify-content: start;
+}
+
+.input {
+  height: 42px;
+  width: 100%;
+  padding: 0 14px;
+  background: #ffffff;
+  border: 1px solid #e5e2ee;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+
+  &::placeholder {
+    color: #676767;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+  }
+}
+
+.cta {
+  height: 42px;
+  width: 100%;
+  max-width: 140px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  background: #F7CA11;
+  color: #161615;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: Poppins, sans-serif;
+}
+
+.checkbox {
+  grid-column: 1 / 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  margin-top: 2px;
+}
