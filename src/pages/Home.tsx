@@ -13,6 +13,16 @@ import Modal from '@/components/ui/Modal'
 import { homeCopy } from '@/components/content/home';
 
 export default function Home() {
+  const categories = [
+    { id: '1', label: 'Tecnologia', value: 'tech', iconUrl: '/images/categories/tecnologia.png' },
+    { id: '2', label: 'Supermercado', value: 'super', iconUrl: '/images/categories/supermercados.png' },
+    { id: '3', label: 'Bebidas', value: 'drinks', iconUrl: '/images/categories/bebidas.png' },
+    { id: '4', label: 'Ferramentas', value: 'tools', iconUrl: '/images/categories/ferramentas.png' },
+    { id: '5', label: 'Saúde', value: 'health', iconUrl: '/images/categories/saude.png' },
+    { id: '6', label: 'Esportes e Fitness', value: 'sports', iconUrl: '/images/categories/esportes.png' },
+    { id: '7', label: 'Moda', value: 'fashion', iconUrl: '/images/categories/moda.png' },
+  ];
+
   return (
     <>
       <Header />
@@ -27,7 +37,7 @@ export default function Home() {
 
         <Container>
           <Section id="categorias" size="sm">
-            <CategoryNav items={[]} />
+            <CategoryNav items={categories} />
           </Section>
 
           <Section id="prod-rel-1" title={homeCopy.sections.relatedTitle}>

@@ -1,6 +1,60 @@
-.wrap { width:100%; }
-.scroll { overflow-x:auto; }
-.list { display:flex; gap:8px; padding:8px 0; }
-.btn { padding:8px 12px; border:1px solid #e5e5e5; background:#fff; border-radius:4px; }
-.active { background:#111; color:#fff; }
-.icon { width:16px; height:16px; margin-right:6px; }
+.wrap {
+  width: 100%;
+  background: #fff; // fundo branco geral
+  padding: 32px 0;
+}
+
+.scroll {
+  overflow-x: auto;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 42px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 42px;
+  font-weight: 400;
+  color: #4E4E4E;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+}
+
+.icon {
+  width: 128px;
+  height: 128px;
+  padding: 16px;
+  background: #F4F4F4;
+  border-radius: 10px;
+  box-shadow: 8px 0 8px -6px rgba(0, 0, 0, 0.06), -8px 0 8px -6px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon img {
+  width: 61px;
+  height: 61px;
+}
+
+.btn.active .icon {
+  background: #fff;
+  border: 2px solid #3f3fff;
+  background-color: #fff;
+}
+
+.btn.active {
+  color: #3f3fff;
+  font-weight: 600;
+}

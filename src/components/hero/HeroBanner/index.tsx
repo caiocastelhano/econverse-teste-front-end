@@ -1,5 +1,4 @@
 import styles from './styles.module.scss';
-import heroImage from '/public/images/hero-image.png'; 
 
 export default function Hero() {
   return (
