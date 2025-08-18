@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Container from "@/components/layout/Container";
@@ -12,7 +14,56 @@ import InstitutionalSection from "@/components/info/InstitutionalSection";
 import Modal from "@/components/ui/Modal";
 import { homeCopy } from "@/components/content/home";
 
-import { InstagramIcon, FacebookIcon, LinkedInIcon } from "@/components/icons";
+type Installment = {
+  quantity: number;
+  value: number;
+  rate?: number;
+  text?: string;
+};
+
+export type Product = {
+  id: string | number;
+  title: string;
+  imageUrl: string;
+  oldPrice?: number;
+  price: number;
+  installment?: Installment;
+  shippingBadge?: string;
+};
+
+const DATA_URL =
+  "https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json";
+
+const toBRLNumber = (n: number) => (n >= 1000 ? n / 100 : n);
+
+function normalize(raw: any): Product {
+  return {
+    id: raw.id ?? raw.productId ?? crypto.randomUUID(),
+    title: raw.title ?? raw.productName ?? raw.nome ?? "Produto",
+    imageUrl: raw.image ?? raw.photo ?? raw.imageUrl ?? "",
+    oldPrice:
+      raw.oldPrice !== undefined
+        ? toBRLNumber(Number(raw.oldPrice))
+        : raw.listPrice !== undefined
+        ? toBRLNumber(Number(raw.listPrice))
+        : undefined,
+    price: toBRLNumber(Number(raw.price ?? raw.sellingPrice ?? 0)),
+    installment: raw.installments
+      ? Array.isArray(raw.installments)
+        ? {
+            quantity: Number(raw.installments[0]?.quantity ?? 0),
+            value: toBRLNumber(Number(raw.installments[0]?.value ?? 0)),
+            text: raw.installments[0]?.text,
+          }
+        : {
+            quantity: Number(raw.installments.quantity ?? 0),
+            value: toBRLNumber(Number(raw.installments.value ?? 0)),
+            text: raw.installments.text,
+          }
+      : undefined,
+    shippingBadge: raw.shippingBadge ?? (raw.freeShipping ? "Frete grátis" : "Frete grátis"),
+  };
+}
 
 export default function Home() {
   const categories = [
@@ -24,6 +75,27 @@ export default function Home() {
     { id: "6", label: "Esportes e Fitness", value: "sports", iconUrl: "/images/categories/esportes.png" },
     { id: "7", label: "Moda", value: "fashion", iconUrl: "/images/categories/moda.png" },
   ];
+
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    (async () => {
+      try {
+        const res = await fetch(DATA_URL, { signal: controller.signal });
+        const json = await res.json();
+        const items: Product[] = (Array.isArray(json) ? json : json.products || []).map(normalize);
+        setAllProducts(items);
+  
+      } catch (e) {
+        console.error("Erro ao carregar produtos:", e);
+      } finally {
+        setLoading(false);
+      }
+    })();
+    return () => controller.abort();
+  }, []);
 
   return (
     <>
@@ -43,18 +115,13 @@ export default function Home() {
           </Section>
 
           <Section id="prod-rel-1" title={homeCopy.sections.relatedTitle}>
-            <nav className="tabs" aria-label="Categorias de produtos">
-              {homeCopy.tabs.map((t) => (
-                <a
-                  key={t.id}
-                  className={`tab ${t.align === "right" ? "tab--right" : ""}`}
-                  href={`#${t.target}`}
-                >
-                  {t.label}
-                </a>
-              ))}
-            </nav>
-            <ProductSection id="celular" products={[]} columns={4} />
+            <ProductSection
+              id="rel-1"
+              columns={4}
+              products={allProducts}
+              initialTab="celular"
+              isLoading={loading}
+            />
           </Section>
 
           <Section id="parceiros-1">
@@ -62,10 +129,14 @@ export default function Home() {
           </Section>
 
           <Section id="prod-rel-2" title={homeCopy.sections.relatedTitle}>
-            <a className="see-all" href="#ver-todos">
-              Ver todos
-            </a>
-            <ProductSection id="rel-2" products={[]} columns={4} />
+            <a className="see-all" href="#ver-todos">Ver todos</a>
+            <ProductSection
+              id="rel-2"
+              columns={4}
+              products={allProducts}
+              initialTab="notebooks"
+              isLoading={loading}
+            />
           </Section>
 
           <Section id="parceiros-2">
@@ -77,10 +148,14 @@ export default function Home() {
           </Section>
 
           <Section id="prod-rel-3" title={homeCopy.sections.relatedTitle}>
-            <a className="see-all" href="#ver-todos">
-              Ver todos
-            </a>
-            <ProductSection id="rel-3" products={[]} columns={4} />
+            <a className="see-all" href="#ver-todos">Ver todos</a>
+            <ProductSection
+              id="rel-3"
+              columns={4}
+              products={allProducts}
+              initialTab="tvs"
+              isLoading={loading}
+            />
           </Section>
 
           <Section id="newsletter" size="lg">
@@ -92,7 +167,7 @@ export default function Home() {
           </Section>
         </Container>
 
-       <InstitutionalSection
+        <InstitutionalSection
           logo={<img src="/images/logo2.png" alt="Econverse" height={28} />}
           description={homeCopy.sections.institutional.description}
           social={homeCopy.sections.institutional.social.map((item) => ({

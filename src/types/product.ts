@@ -1,19 +1,17 @@
-export interface Price {
-  amount: number;
-  currency: 'BRL' | 'USD';
-  promoAmount?: number;
-  installmentText?: string;
-}
+export type Installment = {
+  quantity: number; 
+  value: number;      
+  rate?: number;      
+  text?: string;      
+};
 
-export interface Product {
-  id: string;
+export type Product = {
+  id: string | number;
   title: string;
   imageUrl: string;
-  alt?: string;
-  price: Price;
-  badges?: Array<'novo' | 'promo' | 'frete-gratis'>;
-  brand?: string;
-  category?: string;
-  rating?: number;
-  href?: string;
-}
+  oldPrice?: number;  
+  price: number;      
+  installment?: Installment;
+  shippingBadge?: string; 
+  category?: string;      
+};
