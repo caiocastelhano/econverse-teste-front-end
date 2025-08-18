@@ -31,8 +31,7 @@ export type Product = {
   shippingBadge?: string;
 };
 
-const DATA_URL =
-  "https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json";
+const DATA_URL = "/econverse/teste-front-end/junior/tecnologia/lista-produtos/produtos.json";
 
 const toBRLNumber = (n: number) => (n >= 1000 ? n / 100 : n);
 
@@ -79,23 +78,28 @@ export default function Home() {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const controller = new AbortController();
-    (async () => {
-      try {
-        const res = await fetch(DATA_URL, { signal: controller.signal });
-        const json = await res.json();
-        const items: Product[] = (Array.isArray(json) ? json : json.products || []).map(normalize);
-        setAllProducts(items);
-  
-      } catch (e) {
-        console.error("Erro ao carregar produtos:", e);
-      } finally {
-        setLoading(false);
-      }
-    })();
-    return () => controller.abort();
-  }, []);
+ useEffect(() => {
+  const controller = new AbortController();
+  (async () => {
+    try {
+      const res = await fetch(DATA_URL, { signal: controller.signal });
+      const json = await res.json();
+
+      // 🧪 LOG DE DEBUG:
+      console.log("JSON recebido da API:", json);
+
+      const items: Product[] = (Array.isArray(json) ? json : json.products || []).map(normalize);
+
+      console.log("Produtos normalizados:", items);
+      setAllProducts(items);
+    } catch (e) {
+      console.error("Erro ao carregar produtos:", e);
+    } finally {
+      setLoading(false);
+    }
+  })();
+  return () => controller.abort();
+}, []);
 
   return (
     <>
@@ -118,7 +122,7 @@ export default function Home() {
             <ProductSection
               id="rel-1"
               columns={4}
-              products={allProducts}
+              products={allProducts.slice(0, 4)}
               initialTab="celular"
               isLoading={loading}
             />
@@ -129,12 +133,10 @@ export default function Home() {
           </Section>
 
           <Section id="prod-rel-2" title={homeCopy.sections.relatedTitle}>
-            <a className="see-all" href="#ver-todos">Ver todos</a>
             <ProductSection
               id="rel-2"
               columns={4}
-              products={allProducts}
-              initialTab="notebooks"
+              products={allProducts.slice(4, 8)}
               isLoading={loading}
             />
           </Section>
@@ -148,12 +150,10 @@ export default function Home() {
           </Section>
 
           <Section id="prod-rel-3" title={homeCopy.sections.relatedTitle}>
-            <a className="see-all" href="#ver-todos">Ver todos</a>
             <ProductSection
               id="rel-3"
               columns={4}
-              products={allProducts}
-              initialTab="tvs"
+              products={allProducts.slice(4, 8)}
               isLoading={loading}
             />
           </Section>
