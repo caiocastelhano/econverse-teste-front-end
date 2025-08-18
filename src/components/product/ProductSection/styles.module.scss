@@ -1,6 +1,25 @@
-.title { font-size:1.25rem; margin-bottom:12px; }
-.grid { display:grid; gap:16px; }
-.cols2 { grid-template-columns: repeat(2, 1fr); }
-.cols3 { grid-template-columns: repeat(3, 1fr); }
-.cols4 { grid-template-columns: repeat(4, 1fr); }
-.footer { margin-top:12px; text-align:center; }
+.section { padding: 24px 0 56px; background: transparent; }
+.heading {
+  text-align: center; font-size: 24px; font-weight: 800; color: #3b3bda;
+  margin-bottom: 16px;
+}
+
+.tabs {
+  display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+  margin: 8px auto 24px;
+}
+.tab {
+  height: 36px; padding: 0 16px; border-radius: 8px; border: 1px solid #ddd;
+  background: #fff; color: #444; font-weight: 600; cursor: pointer;
+}
+.active { border-color: #3b5bdb; color: #3b5bdb; box-shadow: 0 0 0 2px rgba(59,91,219,.1); }
+
+.state, .stateError { text-align: center; color: #666; padding: 24px 0; }
+.stateError { color: #b00020; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 16px;
+}
+

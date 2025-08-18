@@ -6,7 +6,6 @@ export const homeCopy = {
     imageUrl: '/images/hero.jpg',
   },
   sections: {
-    relatedTitle: 'Produtos relacionados',
     newsletterTitle: 'Inscreva-se na nossa newsletter',
     newsletterSubtitle: 'Assine a nossa newsletter e receba novidades e conteúdos exclusivos da Econverse.',
     institutional: {
