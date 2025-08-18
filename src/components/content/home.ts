@@ -8,7 +8,6 @@ export const homeCopy = {
   sections: {
     relatedTitle: 'Produtos relacionados',
     partnersTitle: 'Parceiros',
-    brandsTitle: 'Navegue por marcas',
     newsletterTitle: 'Inscreva-se na nossa newsletter',
     newsletterSubtitle: 'Assine e receba novidades e conteúdos exclusivos da Econverse.',
     institutional: [

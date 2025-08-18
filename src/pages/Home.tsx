@@ -69,7 +69,7 @@ export default function Home() {
           </Section>
 
           <Section id="marcas" title={homeCopy.sections.brandsTitle}>
-            <BrandRow items={[]} />
+            <BrandRow items={Array(5).fill('/images/brands/brand.png')} />
           </Section>
 
           <Section id="prod-rel-3" title={homeCopy.sections.relatedTitle}>

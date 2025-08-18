@@ -1,4 +1,41 @@
-.row { display:flex; gap:16px; align-items:center; overflow-x:auto; padding:8px 0; }
-.brand { background:#fff; border:1px solid #eee; border-radius:6px; padding:8px 12px; }
-.brand img { height:24px; display:block; }
-.active { outline:2px solid #111; }
+.brandRow {
+  text-align: center;
+  padding: 40px 0;
+  background-color: #fff;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-family: Poppins, sans-serif;
+  font-weight: bold;
+  color: #3442B5;
+  margin-bottom: 32px;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 42px;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  width: 211px;
+  height: 211px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.13);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  max-width: 60%;
+  max-height: 60%;
+  object-fit: contain;
+}
