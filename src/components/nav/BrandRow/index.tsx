@@ -1,27 +1,20 @@
 import styles from './styles.module.scss';
 
-export type Brand = { id: string; name: string; logoUrl: string; value: string };
-type Props = {
-  items: Brand[];
-  selected?: string;
-  onSelect?: (value: string) => void;
+type BrandRowProps = {
+  items: string[];
 };
 
-export default function BrandRow({ items, selected, onSelect }: Props) {
+export default function BrandRow({ items }: BrandRowProps) {
   return (
-    <nav aria-label="Marcas" className={styles.row}>
-      {items.map(b => (
-        <button
-          key={b.id}
-          className={`${styles.brand} ${selected === b.value ? styles.active : ''}`}
-          onClick={() => onSelect?.(b.value)}
-          aria-pressed={selected === b.value}
-          aria-label={b.name}
-          title={b.name}
-        >
-          <img src={b.logoUrl} alt="" />
-        </button>
-      ))}
-    </nav>
+    <div className={styles.brandRow}>
+      <h2 className={styles.title}>Navegue por marcas</h2>
+      <ul className={styles.list}>
+        {items.map((src, index) => (
+          <li key={index} className={styles.item}>
+            <img src={src} alt="Marca" className={styles.logo} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
