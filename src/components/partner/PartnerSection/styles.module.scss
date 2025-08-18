@@ -1,2 +1,16 @@
-.title { font-size:1.25rem; margin-bottom:12px; }
-.grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:16px; }
+.section {
+  padding: 60px 0;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.grid {
+  display: flex;
+  gap: 13px;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
