@@ -8,7 +8,7 @@ export const homeCopy = {
   sections: {
     relatedTitle: 'Produtos relacionados',
     newsletterTitle: 'Inscreva-se na nossa newsletter',
-    newsletterSubtitle: 'Assine e receba novidades e conteúdos exclusivos da Econverse.',
+    newsletterSubtitle: 'Assine a nossa newsltter e receba novidades e conteúdos exclusivos da Econverse.',
     institutional: [
       { id: 'seg', title: 'Compra 100% segura' },
       { id: 'frete', title: 'Frete grátis acima de R$ 200' },
